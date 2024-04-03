@@ -25,6 +25,27 @@ const Quiz: FC<Props> = ({ questions }) => {
       return "wrong";
     }
   };
+
+  const next = () => {
+    if (index === questions.length - 1) {
+      setFinished(true);
+    } else {
+      setIndex(index + 1);
+      setSelectedAnswer(null);
+    }
+
+    if (selectedAnswer === question.answer) {
+      setScore(score + 1);
+    }
+  };
+
+  const reset = () => {
+    setIndex(0);
+    setScore(0);
+    setSelectedAnswer(null);
+    setFinished(false);
+  };
+
   return <div></div>;
 };
 
