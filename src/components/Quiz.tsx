@@ -46,7 +46,58 @@ const Quiz: FC<Props> = ({ questions }) => {
     setFinished(false);
   };
 
-  return <div></div>;
+  const resultMessage = () => {
+    if (score <= 4) {
+      return "You can do better!";
+    } else if (score >= 5 && score < 7) {
+      return "Not bad!";
+    } else if (score >= 7 && score < 10) {
+      return "Well done!";
+    } else {
+      return "You're a champion!";
+    }
+  };
+
+  return (
+    <div className="container">
+      <h1>Trivia Quiz</h1>
+      <hr />
+      {finished ? (
+        <>
+          <h2>
+            You scored {score} points out of {questions.length} <br />
+            {resultMessage()}
+          </h2>
+          <button className="btn" onClick={reset}>
+            Start again
+          </button>
+        </>
+      ) : (
+        <>
+          <h2>
+            {index + 1}. {question.question}
+          </h2>
+          <ul>
+            {question.choices.map((choice, index) => (
+              <li
+                key={choice}
+                onClick={() => !selectedAnswer && setSelectedAnswer(index)}
+                className={highlightAnswer(index)}
+              >
+                {choice}
+              </li>
+            ))}
+          </ul>
+          <button className="btn" onClick={next}>
+            Next
+          </button>
+          <div className="index">
+            {index + 1} of {questions.length} questions
+          </div>
+        </>
+      )}
+    </div>
+  );
 };
 
 export default Quiz;
