@@ -4,7 +4,7 @@ import { data } from "./questions";
 const App = () => {
   return (
     <>
-      <Quiz questions={data.questions} />
+      <Quiz questions={data} />
     </>
   );
 };
