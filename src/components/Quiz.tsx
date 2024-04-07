@@ -65,7 +65,7 @@ const Quiz: FC<Props> = ({ questions }) => {
       {finished ? (
         <>
           <h2>
-            You scored {score} points out of {questions.length} <br />
+            You scored {score} points out of {questions.length}. <br />
             {resultMessage()}
           </h2>
           <button className="btn" onClick={reset}>
